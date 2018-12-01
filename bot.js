@@ -409,7 +409,11 @@ client.on('message', message => {
 }); 
 
 
-
+client.on('message', msg => {
+  if (msg.content === '1') {
+    msg.reply('WLC to Mine-Alts System');
+  }
+});
 
 
 
