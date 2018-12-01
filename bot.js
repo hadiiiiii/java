@@ -1676,5 +1676,45 @@ return;
 });
 
 
+client.on('message', msg => {
+	var  prefix = "!";
+ if (msg.content.startsWith(prefix + 'cal')) {
+    let args = msg.content.split(" ").slice(1);
+        const question = args.join(' ');
+    if (args.length < 1) {
+        msg.reply('Specify a equation, please.');
+} else {    let answer;
+    try {
+        answer = math.eval(question);
+    } catch (err) {
+        msg.reply(`Error: ${err}`);
+    }
+    
+    const embed = new Discord.RichEmbed()
+    .addField("**Input**: ",`**${question}**`, true)
+    .addField("**Output**: ",`**${answer}**`, true)
+    msg.channel.send(embed)
+    }
+};
+});
+
+client.on('message', message => { 
+	var prefix = "!";
+ let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith(prefix + 'short')) {
+    if(!message.channel.guild) return;  
+
+        googl.setKey('AIzaSyC2Z2mZ_nZTcSvh3QvIyrmOIFP6Ra6co6w');
+        googl.getKey();
+        googl.shorten(args.join(' ')).then(shorturl => {
+            message.channel.send(''+shorturl)
+        }).catch(e=>{
+            console.log(e.message);
+            message.channel.send('Error!');
+        });
+}
+});
+
+
 
 client.login(process.env.BOT_TOKEN);
