@@ -416,5 +416,16 @@ client.on('message', msg => {
 });
 
 
+client.on('message', message => {
+        if (message.content === "^inv") {
+            if(!message.channel.guild) return;
+        let embed = new Discord.RichEmbed()
+        .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
+        .setTitle(`:small_orange_diamond: Click Here `)
+        .setURL(`https://discordapp.com/api/oauth2/authorize?client_id=506882075731951616&permissions=0&scope=bot`)        
+     message.channel.sendEmbed(embed);
+       }
+   });
+
 
 client.login(process.env.BOT_TOKEN);
