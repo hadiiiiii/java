@@ -355,7 +355,6 @@ client.user.setStatus("dnd")
 
 
 client.on('ready', () => {
-  client.user.setGame(`on 0 servers | *help | By Suhaib #4272 .`,'');
   console.log('---------------');
   console.log(' Bot Is Online')
   console.log('---------------')
